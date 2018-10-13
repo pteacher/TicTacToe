@@ -17,7 +17,21 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Main();
+        Main m = new Main();
+        Graphics g = m.getGraphics();
+
+        Scanner scanner = new Scanner(System.in);
+        boolean turn = true;
+
+        while (true) {
+            if (turn) {
+                drawNolik(scanner.nextInt(), scanner.nextInt(), g);
+            }
+            else {
+                drawKrestik(scanner.nextInt(), scanner.nextInt(), g);
+            }
+            turn = !turn;
+        }
 
     }
 
@@ -33,19 +47,6 @@ public class Main extends JFrame {
                     i * WINDOW_WIDTH / FIELD_SIZE ,
                     i * WINDOW_HEIGHT);
         }
-
-        Scanner scanner = new Scanner(System.in);
-        boolean turn = true;
-        while (true) {
-            if (turn) {
-                drawNolik(scanner.nextInt(), scanner.nextInt(), g);
-            }
-            else {
-                drawKrestik(scanner.nextInt(), scanner.nextInt(), g);
-            }
-            turn = !turn;
-        }
-
     }
 
     public static void drawKrestik(int x, int y, Graphics g) {
